@@ -88,6 +88,7 @@ char* ROOM_TYPE_INT_TO_STRING[NUMROOMTYPES] =
 #define MAX_ROOMS 99
 #define MAX_APARTMENTS 999
 #define MAX_SEGMENTS 9
+#define ROOM_NO_ROW 0
 
 // Structures
 typedef struct {
@@ -120,7 +121,7 @@ main(int argc, char* argv[]) {
     room_t apartment[MAX_ROOMS * MAX_SEGMENTS];
     int apartmentno = 0, num_of_rooms = 0, num_of_apartments = 0;
     double room_area = 0, total_area = 0;
-    double area_percentages[MAX_APARTMENTS][4]; //Change the 4
+    double area_percentages[MAX_APARTMENTS][4]; //Change the 
 
     //find the apartment number
     while (scanf("%d", &apartmentno) == 1) {
@@ -260,16 +261,16 @@ print_building_percentage_table(double area_percentages[][4], int num_of_apartme
             area_percentages[i][2] + area_percentages[i][3];
 
         //find the percent of each area type to total area
-        wet_percent = 100 * (area_percentages[i][1] / total_area);  //CHANGE THESE CONSTANTS TO A #DEFINE!!!!!
-        dry_percent = 100 * (area_percentages[i][2] / total_area);
-        utility_percent = 100 * (area_percentages[i][3] / total_area);
+        wet_percent = 100 * (area_percentages[i][WET] / total_area);
+        dry_percent = 100 * (area_percentages[i][DRY] / total_area);
+        utility_percent = 100 * (area_percentages[i][UTILITY] / total_area);
 
         //print lines
         printf("|  %03.0f  | %6.2lf  %4.1lf%%  | %6.2lf  %4.1lf%%  | %6.2lf  %4.1lf%%  |\n",
-            area_percentages[i][0],  //SAME HERE!!!
-            area_percentages[i][1], wet_percent,
-            area_percentages[i][2], dry_percent,
-            area_percentages[i][3], utility_percent);
+            area_percentages[i][ROOM_NO_ROW],
+            area_percentages[i][WET], wet_percent,
+            area_percentages[i][DRY], dry_percent,
+            area_percentages[i][UTILITY], utility_percent);
     }
     printf("+-------+----------------+----------------+----------------+\n");
 }
