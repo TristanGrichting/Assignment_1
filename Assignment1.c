@@ -276,8 +276,8 @@ print_building_percentage_table(double area_percentages[][4],
         //print lines
         printf("|  %03.0f  | %6.2lf  %4.1lf%%  | %6.2lf  %4.1lf%%  | %6.2lf  %4.1lf%%  |\n",
             area_percentages[i][ROOM_NO_ROW],
-            area_percentages[i][DRY], wet_percent,
-            area_percentages[i][WET], dry_percent,
+            area_percentages[i][DRY], dry_percent,
+            area_percentages[i][WET], wet_percent,
             area_percentages[i][UTILITY], utility_percent);
     }
     printf("+-------+----------------+----------------+----------------+\n");
