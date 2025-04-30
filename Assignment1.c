@@ -112,6 +112,7 @@ void    sort_room_t_array_by_room_type(room_t apartment[], int n);
 void    print_building_percentage_table(double area_percentages[][4],
     int num_of_apartments);
 int     read_room_t_array(room_t apartment[], int maxvals);
+int    read_write_apartment_area();
 
 /**********************************************************************/
 
@@ -119,11 +120,39 @@ int
 main(int argc, char* argv[]) {
     //define variables
     room_t apartment[MAX_ROOMS * MAX_SEGMENTS];
-    int apartmentno = 0, num_of_rooms = 0, num_of_apartments = 0;
-    double room_area = 0, total_area = 0;
+    int num_of_apartments = 0;
     double area_percentages[MAX_APARTMENTS][4]; //Change the 
 
     //find the apartment number
+    num_of_apartments = read_write_apartment_area(apartment, area_percentages);
+
+    // print summary
+    printf("+-------+----------------+----------------+----------------+\n");
+    printf("| Apart |    Dry areas   |    Wet areas   |  Utility areas |\n");
+    printf("+-------+----------------+----------------+----------------+\n");
+    print_building_percentage_table(area_percentages, num_of_apartments);
+
+    /* you have to write the body of the main function, but don't
+       make it too long, it should control the traffic flow and use
+       functions to do the actual work
+    */
+
+    /* all done, time for a nap */
+    printf("\n");
+    printf("tadaa!\n");
+    return EXIT_SUCCESS;
+}
+
+/**********************************************************************/
+
+/* add all your functions here, one function per major (or minor!)
+   task
+*/
+
+int read_write_apartment_area(room_t apartment[],
+    double area_percentages[][4]) {
+    int apartmentno = 0, num_of_apartments = 0, num_of_rooms = 0;
+    double room_area = 0, total_area = 0;
     while (scanf("%d", &apartmentno) == 1) {
 
         //read apartment data
@@ -133,7 +162,7 @@ main(int argc, char* argv[]) {
         sort_room_t_array_by_room_num(apartment, num_of_rooms);
         sort_room_t_array_by_room_type(apartment, num_of_rooms);
 
-        //write output
+        //write output header
         printf("Apartment %d\n-------------\n", apartmentno);
 
         //for each of the rooms
@@ -149,7 +178,8 @@ main(int argc, char* argv[]) {
                     //calculate room area
                     room_area += apartment[i].xsize * apartment[i].ysize;
 
-                    //print results -room area as that will be displayed in final area
+                    //print results -room area as that will be displayed 
+                    //in final area
                     printf("%-8s %-2d %6.2lf  x  %-5.2lf   ---\n",
                         ROOM_TYPE_INT_TO_STRING[apartment[i].type],
                         apartment[i].num, apartment[i].xsize,
@@ -180,35 +210,14 @@ main(int argc, char* argv[]) {
         printf("\n");
 
         //format area_percentages
-        area_percentages[num_of_apartments][0] = apartmentno;
+        area_percentages[num_of_apartments][ROOM_NO_ROW] = apartmentno;
 
         //reset variable
         total_area = 0;
         num_of_apartments += 1;
     }
-
-    // print summary
-    printf("+-------+----------------+----------------+----------------+\n");
-    printf("| Apart |    Dry areas   |    Wet areas   |  Utility areas |\n");
-    printf("+-------+----------------+----------------+----------------+\n");
-    print_building_percentage_table(area_percentages, num_of_apartments);
-
-    /* you have to write the body of the main function, but don't
-       make it too long, it should control the traffic flow and use
-       functions to do the actual work
-    */
-
-    /* all done, time for a nap */
-    printf("\n");
-    printf("tadaa!\n");
-    return EXIT_SUCCESS;
+    return num_of_apartments;
 }
-
-/**********************************************************************/
-
-/* add all your functions here, one function per major (or minor!)
-   task
-*/
 
 //This is a variation of the array reading program provided in class modified for my structure
 int
