@@ -122,19 +122,8 @@ main(int argc, char* argv[]) {
     room_t apartment[MAX_ROOMS * MAX_SEGMENTS];
     int num_of_apartments = 0;
     double area_percentages[MAX_APARTMENTS][4]; //Change the 
-
-    //find the apartment number
     num_of_apartments = read_write_apartment_area(apartment, area_percentages);
-
-    // print summary
     print_building_percentage_table(area_percentages, num_of_apartments);
-
-    /* you have to write the body of the main function, but don't
-       make it too long, it should control the traffic flow and use
-       functions to do the actual work
-    */
-
-    /* all done, time for a nap */
     printf("\n");
     printf("tadaa!\n");
     return EXIT_SUCCESS;
