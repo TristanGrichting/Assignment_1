@@ -276,8 +276,8 @@ print_building_percentage_table(double area_percentages[][4],
     //for each entry in area_percentages
     for (int i = 0; i < num_of_apartments; i++) {
         //find the total area
-        total_area = area_percentages[i][1] +
-            area_percentages[i][2] + area_percentages[i][3];
+        total_area = area_percentages[i][WET] +
+            area_percentages[i][DRY] + area_percentages[i][UTILITY];
 
         //find the percent of each area type to total area
         wet_percent = 100 * (area_percentages[i][WET] / total_area);
