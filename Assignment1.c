@@ -127,9 +127,6 @@ main(int argc, char* argv[]) {
     num_of_apartments = read_write_apartment_area(apartment, area_percentages);
 
     // print summary
-    printf("+-------+----------------+----------------+----------------+\n");
-    printf("| Apart |    Dry areas   |    Wet areas   |  Utility areas |\n");
-    printf("+-------+----------------+----------------+----------------+\n");
     print_building_percentage_table(area_percentages, num_of_apartments);
 
     /* you have to write the body of the main function, but don't
@@ -242,7 +239,10 @@ void
 sort_room_t_array_by_room_num(room_t apartment[], int n) {
     int i, j;
     for (i = 1; i < n; i++) {
-        for (j = i - 1; j >= 0 && apartment[j + 1].num < apartment[j].num; j--) {
+        for (j = i - 1;
+            j >= 0 && apartment[j + 1].num < apartment[j].num;
+            j--) {
+
             room_t_swap(&apartment[j], &apartment[j + 1]);
         }
     }
@@ -253,16 +253,26 @@ void
 sort_room_t_array_by_room_type(room_t apartment[], int n) {
     int i, j;
     for (i = 1; i < n; i++) {
-        for (j = i - 1; j >= 0 && apartment[j + 1].type < apartment[j].type; j--) {
+        for (j = i - 1;
+            j >= 0 && apartment[j + 1].type < apartment[j].type;
+            j--) {
+
             room_t_swap(&apartment[j], &apartment[j + 1]);
         }
     }
 }
 
 void
-print_building_percentage_table(double area_percentages[][4], int num_of_apartments) {
+print_building_percentage_table(double area_percentages[][4],
+    int num_of_apartments) {
     //define variables
     double total_area = 0, wet_percent = 0, dry_percent = 0, utility_percent = 0;
+
+    //print result header
+    printf("+-------+----------------+----------------+----------------+\n");
+    printf("| Apart |    Dry areas   |    Wet areas   |  Utility areas |\n");
+    printf("+-------+----------------+----------------+----------------+\n");
+
     //for each entry in area_percentages
     for (int i = 0; i < num_of_apartments; i++) {
         //find the total area
