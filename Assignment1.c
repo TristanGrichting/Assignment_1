@@ -259,7 +259,8 @@ void
 print_building_percentage_table(double area_percentages[][4],
     int num_of_apartments) {
     //define variables
-    double total_area = 0, wet_percent = 0, dry_percent = 0, utility_percent = 0;
+    double total_area = 0, wet_percent = 0,
+        dry_percent = 0, utility_percent = 0;
 
     //print result header
     printf("+-------+----------------+----------------+----------------+\n");
