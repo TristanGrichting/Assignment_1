@@ -178,7 +178,8 @@ int read_write_apartment_area(room_t apartment[],
                     //add room area to the total area of the apartment
                     total_area += room_area;
 
-                    //add the room area to the table of areas in the correct position
+                    //add the room area to the table of areas in the correct 
+                    //position
                     area_percentages[num_of_apartments]
                         [roomcategories[apartment[i].type]] += room_area;
 
@@ -205,7 +206,8 @@ int read_write_apartment_area(room_t apartment[],
     return num_of_apartments;
 }
 
-//This is a variation of the array reading program provided in class modified for my structure
+//This is a variation of the array reading program provided in class modified 
+//for my structure
 int
 read_room_t_array(room_t apartment[], int maxvals) {
     int n = 0;
@@ -223,7 +225,8 @@ read_room_t_array(room_t apartment[], int maxvals) {
     return n;
 }
 
-//This is a variation of the insert sort algorithim shown in class for my structure
+//This is a variation of the insert sort algorithim shown in class for my 
+//structure
 void
 sort_room_t_array_by_room_num(room_t apartment[], int n) {
     int i, j;
@@ -237,7 +240,8 @@ sort_room_t_array_by_room_num(room_t apartment[], int n) {
     }
 }
 
-//This is a variation of the insert sort algorithim shown in class for my structure
+//This is a variation of the insert sort algorithim shown in class for my 
+//structure
 void
 sort_room_t_array_by_room_type(room_t apartment[], int n) {
     int i, j;
